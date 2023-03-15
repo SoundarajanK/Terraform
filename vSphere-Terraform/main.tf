@@ -7,7 +7,9 @@ provider "vsphere" {
   allow_unverified_ssl = true
 }
 
-data "vsphere_datacenter" "dc" {}
+data "vsphere_datacenter" "dc" {
+  name = "S360-MG-DC01"
+}
 
 resource "vsphere_folder" "folder" {
   path          = var.vsphere_folder
