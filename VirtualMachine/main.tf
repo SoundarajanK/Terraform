@@ -41,8 +41,6 @@ resource "vsphere_virtual_machine" "vm" {
   guest_id         = data.vsphere_virtual_machine.template.guest_id
   network_interface {
     network_id = data.vsphere_network.network.id
-    ipv4_address = "192.168.141.14"
-    ipv4_netmask = 24
   }
   disk {
     label = "disk0"
