@@ -1,8 +1,3 @@
-variable "vm_name" {
-  type        = string
-  description = "VM Name"
-}
-
 provider "vsphere" {
 
   # If you have a self-signed cert
@@ -10,11 +5,11 @@ provider "vsphere" {
 }
 
 data "vsphere_datacenter" "dc" {
-  name = "Datacenter"
+  name = "S360-MG-DC01"
 }
 
 data "vsphere_datastore" "datastore" {
-  name          = "datastore1"
+  name          = "S360-MG-VSAN01"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
@@ -35,7 +30,7 @@ resource "vsphere_virtual_machine" "vm" {
 
   num_cpus = 1
   memory   = 1024
-  guest_id = "other3xLinux64Guest"
+  guest_id = "CentOS7-CloudInit"
 
   network_interface {
     network_id = "${data.vsphere_network.network.id}"
