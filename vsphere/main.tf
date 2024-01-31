@@ -51,6 +51,10 @@ resource "vsphere_virtual_machine" "vm" {
   clone {
     template_uuid = data.vsphere_virtual_machine.template.id
     customize {
+        linux_options {
+        host_name = var.vm_name
+        domain    = "s360.lab"
+      }
         network_interface {
         ipv4_address = "192.168.141.29"
         ipv4_netmask = 24
