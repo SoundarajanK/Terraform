@@ -2,7 +2,7 @@ provider "vsphere" {
   user           = var.vsphere_user
   password       = var.vsphere_password
   vsphere_server = var.vsphere_server
-  datacenter     = "S360-MG-DC01"
+  datacenter     = var.vsphere_datacenter
   allow_unverified_ssl = true
 }
 data "vsphere_datacenter" "dc" {}
