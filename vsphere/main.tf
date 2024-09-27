@@ -40,7 +40,7 @@ resource "vsphere_virtual_machine" "vm" {
   memory           = 1024
   guest_id         = data.vsphere_virtual_machine.template.guest_id
   network_interface {
-    adapter_type = data.vsphere_virtual_machine.template.network_interface_types[0]
+    network_id = data.vsphere_network.network.id
   }
   disk {
     label = "disk0"
