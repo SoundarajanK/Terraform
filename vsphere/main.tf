@@ -52,6 +52,7 @@ resource "vsphere_virtual_machine" "vm" {
     customize {
         linux_options {
         host_name = var.vm_name
+        domain = "corp.local"
       }
     }
   }
