@@ -18,7 +18,7 @@ data "vsphere_datastore" "datastore" {
 }
 
 data "vsphere_compute_cluster" "cluster" {
-  name          = "S360-MG-CL01"
+  name          = "s360-m01-cl01"
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
