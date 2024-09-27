@@ -13,7 +13,7 @@ data "vsphere_datacenter" "datacenter" {
 }
 
 data "vsphere_datastore" "datastore" {
-  name          = "S360-MG-VSAN01"
+  name          = "s360-m01-cl01-ds-vsan01"
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
