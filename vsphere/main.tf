@@ -23,7 +23,7 @@ data "vsphere_compute_cluster" "cluster" {
 }
 
 data "vsphere_network" "network" {
-  name          = "pg-dvmg-dc01-WL-vLAN3241"
+  name          = "s360-m01-cl01-vds01"
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
