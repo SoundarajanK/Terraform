@@ -44,7 +44,7 @@ resource "vsphere_virtual_machine" "vm" {
   }
   disk {
     label = "disk0"
-    size  = 20
+    size  = 25
     thin_provisioned = data.vsphere_virtual_machine.template.disks.0.thin_provisioned
   }
   clone {
@@ -52,7 +52,6 @@ resource "vsphere_virtual_machine" "vm" {
     customize {
         linux_options {
         host_name = var.vm_name
-        domain    = "corp.local"
       }
     }
   }
