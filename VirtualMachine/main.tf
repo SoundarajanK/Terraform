@@ -28,7 +28,7 @@ data "vsphere_network" "network" {
 }
 
 data "vsphere_virtual_machine" "template" {
-  name          = "CentOS7-CloudInit"
+  name          = "ubuntu22.04"
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
@@ -44,6 +44,6 @@ resource "vsphere_virtual_machine" "vm" {
   }
   disk {
     label = "disk0"
-    size  = 20
+    size  = 25
   }
 }
