@@ -9,7 +9,7 @@ provider "vsphere" {
 
 
 data "vsphere_datacenter" "datacenter" {
-  name = "S360-MG-DC01"
+  name = "s360-m01-dc01"
 }
 
 data "vsphere_datastore" "datastore" {
