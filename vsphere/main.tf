@@ -9,26 +9,21 @@ provider "vsphere" {
 
 
 data "vsphere_datacenter" "datacenter" {
-  name = "S360-MG-DC01"
+  name = "s360-m01-dc01"
 }
 
 data "vsphere_datastore" "datastore" {
-  name          = "S360-MG-VSAN01"
+  name          = "s360-m01-cl01-ds-vsan01"
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
 data "vsphere_compute_cluster" "cluster" {
-  name          = "S360-MG-CL01"
-  datacenter_id = data.vsphere_datacenter.datacenter.id
-}
-
-data "vsphere_network" "network" {
-  name          = "pg-dvmg-dc01-WL-vLAN3241"
+  name          = "s360-m01-cl01"
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
 data "vsphere_virtual_machine" "template" {
-  name          = "CentOS7-CloudInit"
+  name          = "ubuntu22.04"
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
@@ -40,7 +35,6 @@ resource "vsphere_virtual_machine" "vm" {
   memory           = 1024
   guest_id         = data.vsphere_virtual_machine.template.guest_id
   network_interface {
-    network_id = data.vsphere_network.network.id
     adapter_type = data.vsphere_virtual_machine.template.network_interface_types[0]
   }
   disk {
@@ -53,13 +47,8 @@ resource "vsphere_virtual_machine" "vm" {
     customize {
         linux_options {
         host_name = var.vm_name
-        domain    = "s360.lab"
+        domain    = "corp.local"
       }
-        network_interface {
-        ipv4_address = "192.168.141.29"
-        ipv4_netmask = 24
-      }
-      ipv4_gateway = "192.168.141.1"
     }
   }
 }
