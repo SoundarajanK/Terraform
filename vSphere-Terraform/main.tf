@@ -8,7 +8,7 @@ provider "vsphere" {
 }
 
 data "vsphere_datacenter" "dc" {
-  name = "S360-MG-DC01"
+  name = "s360-m01-dc01"
 }
 
 resource "vsphere_folder" "folder" {
